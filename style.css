@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+@font-face{
+    src: url(daydream.ttf);
+    font-family: dd;
+}
+
+body{
+    font-family: dd;
+    background-image: url(https://cdna.artstation.com/p/assets/images/images/060/746/018/original/feon-pixel-art-background-3.gif?1696493138);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+h1{
+    text-align: center;
+    color: 	#673147;
+    margin-bottom: 40px;
+    text-shadow: 5px 5px 2px white;
+}
+
+.board{
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: repeat(3, 150px);
+    gap: 2px;
+    justify-content: center;
+}
+
+.cell{
+    border: 3px dashed #5D3FD3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 64px;
+    cursor: pointer;
+    font-family: dd;
+    color:	#BF40BF;
+    transition: 0.5s;
+    text-shadow: 0 0 10px;
+}
+
+.cell:hover{
+    transform: scale(1.1);
+}
+
+.imagem{
+    float: left;
+    width: 150px;
+}
+
+.imagem img{
+    width: 100%;
+    margin-left: 300px;
+    margin-top: 150px;
+}
+
+footer{
+    text-align: center;
+}
+    
+footer strong{
+    color: purple;
+}
+    
+

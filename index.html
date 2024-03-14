@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpuSdxPzyj54rBQqRTGzNUDUxuvImeYEScFsCqxPWOYQ&s">
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Velha</title>
+</head>
+
+<body>
+    <header>
+        <h1><img src="https://media.tenor.com/s6qI01PlPDYAAAAi/yoshi-egg.gif" width="50px">Yoshi's Tic Tac Toe <img src="https://media.tenor.com/s6qI01PlPDYAAAAi/yoshi-egg.gif" width="50px"></h1>
+    </header>
+
+    <main>
+
+        <div class="imagem">
+            <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/8629d2e8-ef8c-4aa8-a51a-5d4e35e73bbc/dfyrr10-f3c0c42f-78a0-4d3d-b0ff-66ed3f8dfce4.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzg2MjlkMmU4LWVmOGMtNGFhOC1hNTFhLTVkNGUzNWU3M2JiY1wvZGZ5cnIxMC1mM2MwYzQyZi03OGEwLTRkM2QtYjBmZi02NmVkM2Y4ZGZjZTQuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.a4JAW6HriMZcwiuYwxEFT2Jd1S3Nl0Pf3pTafEP9f4Q">
+        </div>
+        <div class="board" id="board">
+            <div class="cell" onclick="cellClicked(0)"></div>
+            <div class="cell" onclick="cellClicked(1)"></div>
+            <div class="cell" onclick="cellClicked(2)"></div>
+            <div class="cell" onclick="cellClicked(3)"></div>
+            <div class="cell" onclick="cellClicked(4)"></div>
+            <div class="cell" onclick="cellClicked(5)"></div>
+            <div class="cell" onclick="cellClicked(6)"></div>
+            <div class="cell" onclick="cellClicked(7)"></div>
+            <div class="cell" onclick="cellClicked(8)"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Desenvolvido por Eduardo Xaubet Tarigo | <STRONG>IOS 2024</STRONG></p> <img src="">
+    </footer>
+    <script>
+        let currentPlayer = 'X';
+        let board = ['', '', '', '', '', '', '', '', ''];
+
+        function cellClicked(index) {
+            if (board[index] === '') {
+                board[index] = currentPlayer;
+                document.getElementById('board').children[index].innerText = currentPlayer;
+                checkWinner();
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            }
+        }
+
+        function checkWinner() {
+            const winConditions = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8],
+                [0, 3, 6], [1, 4, 7], [2, 5, 8],
+                [0, 4, 8], [2, 4, 6]
+            ];
+
+            for (let condition of winConditions) {
+                const [a, b, c] = condition;
+                if (board[a] !== '' && board[a] === board[b] && board[a] === board[c]) {
+                    alert(`JOGADOR ${board[a]} VENCEU!`);
+                    resetBoard();
+                    return;
+                }
+            }
+
+            if (!board.includes('')) {
+                alert('EMPATE');
+                resetBoard();
+            }
+        }
+
+        function resetBoard() {
+            currentPlayer = 'X';
+            board = ['', '', '', '', '', '', '', '', ''];
+            for (let i = 0; i < 9; i++) {
+                document.getElementById('board').children[i].innerText = '';
+            }
+        }
+    </script>
+</body>
+
+</html>
